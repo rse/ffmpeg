@@ -15,14 +15,17 @@ About
 
 This is a small NPM module, providing a [FFmpeg](https://ffmpeg.org)
 distribution, to be able to easily use the latest versions of the
-`ffmpeg` executable from within [Node.js](https://nodejs.org) or
-[Electron](https://electronjs.org) applications.
+`ffmpeg` executable from within [Node.js](https://nodejs.org) or from
+[Electron](https://electronjs.org) Node integrations.
 
 The crux of this particular NPM module is that the particular
 platform-specific binaries are manually pre-selected and
 [pre-prepared](ffmpeg.sh) and this NPM module on installation
 automatically [downloads](npm-install.yaml) the corresponding
 cherry-picked binary only.
+
+Hint: if you need FFmpeg in the Browser (like an Electron BrowserWindow),
+check out [FFmpeg.wasm](https://ffmpegwasm.github.io/).
 
 Installation
 ------------

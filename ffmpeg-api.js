@@ -37,5 +37,8 @@ module.exports = class FFmpeg {
         else throw new Error("architecture/platform ${arch}/${platform} not supported")
         return path.resolve(`${__dirname}/ffmpeg.d/${exe}`)
     }
+    static get version () {
+        return "4.4"
+    }
 }
 
