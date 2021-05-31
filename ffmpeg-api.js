@@ -121,6 +121,7 @@ if (binary !== null) {
         info.hwaccels[method] = true
 }
 
+/*  provide API  */
 module.exports = class FFmpeg {
     static get supported () {
         return (binary !== null)
