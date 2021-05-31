@@ -33,9 +33,20 @@ if (process.argv[2] === "prolog") {
 }
 else if (process.argv[2] === "epilog") {
     /*  epilog: actions after NPM-install-fetch  */
-    const FFmpeg = require("./ffmpeg-api.js")
-    fs.chmodSync(FFmpeg.binary, 0o755)
-    if (os.platform() === "darwin")
-        execa.command(`xattr -cr ${FFmpeg.binary} && codesign -s - ${FFmpeg.binary}`, { shell: true })
+    const { arch, platform } = process
+    let binary = null
+    if      (arch === "x64"   && platform === "darwin")   binary = "ffmpeg-mac-x64"
+    else if (arch === "arm64" && platform === "darwin")   binary = "ffmpeg-mac-a64"
+    else if (arch === "x64"   && platform === "win32")    binary = "ffmpeg-win-x64.exe"
+    else if (arch === "x64"   && platform === "linux")    binary = "ffmpeg-lnx-x64"
+    else if (arch === "arm"   && platform === "linux")    binary = "ffmpeg-lnx-a64"
+    else if (arch === "x64"   && platform === "freebsd")  binary = "ffmpeg-bsd-x64"
+    if (binary !== null) {
+        binary = `ffmpeg.d/${binary}`
+        if (os.platform() !== "win32")
+            fs.chmodSync(binary, 0o755)
+        if (os.platform() === "darwin")
+            execa.command(`xattr -cr ${binary} && codesign -s - ${binary}`, { shell: true })
+    }
 }
 
