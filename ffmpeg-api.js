@@ -46,8 +46,11 @@ if (binary !== null) {
     binary = path.resolve(`${__dirname}/ffmpeg.d/${binary}`)
 
     /*  handle "unpacked ASAR" scenario (usually with Electron packaging)  */
-    if (!pathExists(binary) && binary.match(/app\.asar/))
-        binary = binary.replace("app.asar", "app.asar.unpacked")
+    if (binary.match(/app\.asar/)) {
+        const binaryUnpacked = binary.replace("app.asar", "app.asar.unpacked")
+        if (pathExists(binaryUnpacked))
+            binary = binaryUnpacked
+    }
 
     /*  final sanity check  */
     if (!pathExists(binary))
