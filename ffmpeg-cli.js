@@ -26,6 +26,8 @@
 const execa  = require("execa")
 const FFmpeg = require("./ffmpeg-api.js")
 
+if (!FFmpeg.supported)
+    throw new Error("ffmpeg(1) not available on this architecture/platform")
 const proc = execa(FFmpeg.binary, process.argv.slice(2), {
     stdio: [ "inherit", "inherit", "inherit" ]
 })
