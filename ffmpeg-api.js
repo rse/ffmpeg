@@ -23,8 +23,15 @@
 */
 
 /*  external requirements  */
+const fs    = require("fs")
 const path  = require("path")
 const execa = require("execa")
+
+/*  helper function for checking whether a file exists  */
+const pathExists = (p) => {
+    try { fs.accessSync(p, fs.constants.F_OK); return true }
+    catch (ex) { return false }
+}
 
 /*  determine platform-specific binary  */
 const { arch, platform } = process
@@ -35,8 +42,17 @@ else if (arch === "x64"   && platform === "win32")    binary = "ffmpeg-win-x64.e
 else if (arch === "x64"   && platform === "linux")    binary = "ffmpeg-lnx-x64"
 else if (arch === "arm"   && platform === "linux")    binary = "ffmpeg-lnx-a64"
 else if (arch === "x64"   && platform === "freebsd")  binary = "ffmpeg-bsd-x64"
-if (binary !== null)
+if (binary !== null) {
     binary = path.resolve(`${__dirname}/ffmpeg.d/${binary}`)
+
+    /*  handle "unpacked ASAR" scenario (usually with Electron packaging)  */
+    if (!pathExists(binary) && binary.match(/app\.asar/))
+        binary = binary.replace("app.asar", "app.asar.unpacked")
+
+    /*  final sanity check  */
+    if (!pathExists(binary))
+        throw new Error(`expected FFmpeg binary not found under "${binary}"`)
+}
 
 /*  determine binary information  */
 const info = {
