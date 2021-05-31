@@ -1,0 +1,66 @@
+##
+##  @rse/ffmpeg -- FFmpeg distribution for NPM
+##  Copyright (c) 2021 Dr. Ralf S. Engelschall <rse@engelschall.com>
+##
+##  Permission is hereby granted, free of charge, to any person obtaining
+##  a copy of this software and associated documentation files (the
+##  "Software"), to deal in the Software without restriction, including
+##  without limitation the rights to use, copy, modify, merge, publish,
+##  distribute, sublicense, and/or sell copies of the Software, and to
+##  permit persons to whom the Software is furnished to do so, subject to
+##  the following conditions:
+##
+##  The above copyright notice and this permission notice shall be included
+##  in all copies or substantial portions of the Software.
+##
+##  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+##  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+##  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+##  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+##  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+##  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+##  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+##
+
+-   arch:     "x64"
+    platform: "darwin"
+    name:     "FFmpeg 4.4 (macOS/x64, static) [73 MB]"
+    input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-mac-x64"
+    extract:  false
+    output:   "ffmpeg.d/ffmpeg-mac-x64"
+
+-   arch:     "arm64"
+    platform: "darwin"
+    name:     "FFmpeg 4.4 (macOS/a64, static) [35 MB]"
+    input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-mac-a64"
+    extract:  false
+    output:   "ffmpeg.d/ffmpeg-mac-a64"
+
+-   arch:     "x64"
+    platform: "win32"
+    name:     "FFmpeg 4.4 (Windows/x64, static) [73 MB]"
+    input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-win-x64"
+    extract:  false
+    output:   "ffmpeg.d/ffmpeg-win-x64.exe"
+
+-   arch:     "x64"
+    platform: "linux"
+    name:     "FFmpeg 4.4 (Linux/x64, static) [73 MB]"
+    input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-lnx-x64"
+    extract:  false
+    output:   "ffmpeg.d/ffmpeg-lnx-x64"
+
+-   arch:     "arm"
+    platform: "linux"
+    name:     "FFmpeg 4.4 (Linux/a64, static) [46 MB]"
+    input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-lnx-a64"
+    extract:  false
+    output:   "ffmpeg.d/ffmpeg-lnx-a64"
+
+-   arch:     "x64"
+    platform: "freebsd"
+    name:     "FFmpeg 4.4 (FreeBSD/x64, static) [63 MB]"
+    input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-bsd-x64"
+    extract:  false
+    output:   "ffmpeg.d/ffmpeg-bsd-x64"
+
