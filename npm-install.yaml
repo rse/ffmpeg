@@ -39,7 +39,7 @@
 -   arch:     "x64"
     platform: "win32"
     name:     "FFmpeg 4.4 (Windows/x64, static) [73 MB]"
-    input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-win-x64"
+    input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-win-x64.exe"
     extract:  false
     output:   "ffmpeg.d/ffmpeg-win-x64.exe"
 
