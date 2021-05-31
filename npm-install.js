@@ -23,13 +23,14 @@
 */
 
 const os     = require("os")
+const path   = require("path")
 const fs     = require("fs")
 const mkdirp = require("mkdirp")
 const execa  = require("execa")
 
 if (process.argv[2] === "prolog") {
     /*  prolog: actions before npm-install-fetch  */
-    mkdirp.sync("ffmpeg.d", { mode: 0o755 })
+    mkdirp.sync(path.join(__dirname, "ffmpeg.d"), { mode: 0o755 })
 }
 else if (process.argv[2] === "epilog") {
     /*  epilog: actions after NPM-install-fetch  */
@@ -42,7 +43,7 @@ else if (process.argv[2] === "epilog") {
     else if (arch === "arm"   && platform === "linux")    binary = "ffmpeg-lnx-a64"
     else if (arch === "x64"   && platform === "freebsd")  binary = "ffmpeg-bsd-x64"
     if (binary !== null) {
-        binary = `ffmpeg.d/${binary}`
+        binary = path.join(__dirname, "ffmpeg.d", binary)
         if (os.platform() !== "win32")
             fs.chmodSync(binary, 0o755)
         if (os.platform() === "darwin")
