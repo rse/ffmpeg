@@ -6,7 +6,7 @@
     "keywords":                         [ "ffmpeg", "video", "audio" ],
     "main":                             "./ffmpeg-api.js",
     "bin":                              { "ffmpeg": "./ffmpeg-cli.js" },
-    "license":                          "MIT",
+    "license":                          "(MIT AND LGPL-2.1 AND GPL-2.0)",
     "repository": {
         "type":                         "git",
         "url":                          "https://github.com/rse/ffmpeg.git"
