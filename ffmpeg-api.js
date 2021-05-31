@@ -39,10 +39,17 @@ if (binary !== null)
     binary = path.resolve(`${__dirname}/ffmpeg.d/${binary}`)
 
 /*  determine binary information  */
-const info = {}
+const info = {
+    version:   "0.0",
+    protocols: {},
+    formats:   {},
+    codecs:    {},
+    hwaccels:  {},
+    devices:   {},
+    pixfmts:   {}
+}
 if (binary !== null) {
     /*  determine version  */
-    info.version = "0.0"
     let proc = execa.sync(binary, [ "-version" ])
     let m = proc.stdout.match(/ffmpeg\s+version\s+(\d+\.\d+(\.\d+)?)/)
     if (m !== null) {
@@ -52,7 +59,6 @@ if (binary !== null) {
     }
 
     /*  determine available protocols  */
-    info.protocols = {}
     proc = execa.sync(binary, [ "-hide_banner", "-protocols" ])
     const input   = proc.stdout.replace(/^(?:.|\r?\n)*Input:((?:.|\r?\n)+?)Output:(?:.|\r?\n)*$/, "$1")
     const output  = proc.stdout.replace(/^(?:.|\r?\n)*?Output:((?:.|\r?\n)+)$/, "$1")
@@ -68,7 +74,6 @@ if (binary !== null) {
     }
 
     /*  determine available formats  */
-    info.formats = {}
     proc = execa.sync(binary, [ "-hide_banner", "-formats" ])
     let re = /^ ([D ])([E ]) (\S+)/mg
     while ((m = re.exec(proc.stdout)) !== null)
@@ -76,7 +81,6 @@ if (binary !== null) {
             info.formats[name] = { demux: m[1] === "D", mux: m[2] === "E" }
 
     /*  determine available codecs  */
-    info.codecs = {}
     proc = execa.sync(binary, [ "-hide_banner", "-codecs" ])
     re = /^ ([D.])([E.])([VAS.])([I.])([L.])([S.]) (\S+)/mg
     while ((m = re.exec(proc.stdout)) !== null) {
@@ -90,7 +94,6 @@ if (binary !== null) {
     }
 
     /*  determine available devices  */
-    info.devices = {}
     proc = execa.sync(binary, [ "-hide_banner", "-devices" ])
     re = /^ ([D ])([E ]) (\S+)/mg
     while ((m = re.exec(proc.stdout)) !== null)
@@ -98,7 +101,6 @@ if (binary !== null) {
             info.devices[name] = { demux: m[1] === "D", mux: m[2] === "E" }
 
     /*  determine available pixel formats  */
-    info.pixfmts = {}
     proc = execa.sync(binary, [ "-hide_banner", "-pix_fmts" ])
     re = /^([I.])([O.])([H.])([P.])([B.]) (\S+)/mg
     while ((m = re.exec(proc.stdout)) !== null) {
@@ -111,7 +113,6 @@ if (binary !== null) {
     }
 
     /*  determine available hardware accelerations  */
-    info.hwaccels = {}
     proc = execa.sync(binary, [ "-hide_banner", "-hwaccels" ])
     let methods = proc.stdout.replace(/^Hardware acceleration methods:\r?\n((?:.|\r?\n)*)$/, "$1")
         .replace(/^\s+/, "").replace(/\s+$/, "")
