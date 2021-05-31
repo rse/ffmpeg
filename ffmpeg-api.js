@@ -22,23 +22,115 @@
 **  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const path = require("path")
+/*  external requirements  */
+const path  = require("path")
+const execa = require("execa")
+
+/*  determine platform-specific binary  */
+const { arch, platform } = process
+let binary = null
+if      (arch === "x64"   && platform === "darwin")   binary = "ffmpeg-mac-x64"
+else if (arch === "arm64" && platform === "darwin")   binary = "ffmpeg-mac-a64"
+else if (arch === "x64"   && platform === "win32")    binary = "ffmpeg-win-x64.exe"
+else if (arch === "x64"   && platform === "linux")    binary = "ffmpeg-lnx-x64"
+else if (arch === "arm"   && platform === "linux")    binary = "ffmpeg-lnx-a64"
+else if (arch === "x64"   && platform === "freebsd")  binary = "ffmpeg-bsd-x64"
+if (binary !== null)
+    binary = path.resolve(`${__dirname}/ffmpeg.d/${binary}`)
+
+/*  determine binary information  */
+const info = {}
+if (binary !== null) {
+    /*  determine version  */
+    info.version = "0.0"
+    let proc = execa.sync(binary, [ "-version" ])
+    let m = proc.stdout.match(/ffmpeg\s+version\s+(\d+\.\d+(\.\d+)?)/)
+    if (m !== null) {
+        info.version = m[1]
+        if (m[2] === undefined)
+            info.version += ".0"
+    }
+
+    /*  determine available protocols  */
+    info.protocols = {}
+    proc = execa.sync(binary, [ "-hide_banner", "-protocols" ])
+    const input   = proc.stdout.replace(/^(?:.|\r?\n)*Input:((?:.|\r?\n)+?)Output:(?:.|\r?\n)*$/, "$1")
+    const output  = proc.stdout.replace(/^(?:.|\r?\n)*?Output:((?:.|\r?\n)+)$/, "$1")
+    const inputs  = input.replace(/^\s+/, "").replace(/\s+$/, "").split(/\s+/)
+    const outputs = output.replace(/^\s+/, "").replace(/\s+$/, "").split(/\s+/)
+    for (const input of inputs)
+        info.protocols[input] = { input: true, output: false }
+    for (const output of outputs) {
+        if (info.protocols[output] === undefined)
+            info.protocols[output] = { input: false, output: true }
+        else
+            info.protocols[output].output = true
+    }
+
+    /*  determine available formats  */
+    info.formats = {}
+    proc = execa.sync(binary, [ "-hide_banner", "-formats" ])
+    let re = /^ ([D ])([E ]) (\S+)/mg
+    while ((m = re.exec(proc.stdout)) !== null)
+        for (const name of m[3].split(/,/))
+            info.formats[name] = { demux: m[1] === "D", mux: m[2] === "E" }
+
+    /*  determine available codecs  */
+    info.codecs = {}
+    proc = execa.sync(binary, [ "-hide_banner", "-codecs" ])
+    re = /^ ([D.])([E.])([VAS.])([I.])([L.])([S.]) (\S+)/mg
+    while ((m = re.exec(proc.stdout)) !== null) {
+        for (const name of m[7].split(/,/)) {
+            info.codecs[name] = {
+                demux: m[1] === "D", mux:   m[2] === "E",
+                video: m[3] === "V", audio: m[3] === "A", subtitle: m[3] === "S",
+                intra: m[4] === "I", lossy: m[5] === "L", lossless: m[6] === "S"
+            }
+        }
+    }
+
+    /*  determine available devices  */
+    info.devices = {}
+    proc = execa.sync(binary, [ "-hide_banner", "-devices" ])
+    re = /^ ([D ])([E ]) (\S+)/mg
+    while ((m = re.exec(proc.stdout)) !== null)
+        for (const name of m[3].split(/,/))
+            info.devices[name] = { demux: m[1] === "D", mux: m[2] === "E" }
+
+    /*  determine available pixel formats  */
+    info.pixfmts = {}
+    proc = execa.sync(binary, [ "-hide_banner", "-pix_fmts" ])
+    re = /^([I.])([O.])([H.])([P.])([B.]) (\S+)/mg
+    while ((m = re.exec(proc.stdout)) !== null) {
+        for (const name of m[6].split(/,/)) {
+            info.pixfmts[name] = {
+                input: m[1] === "I", output: m[2] === "O",
+                hardware: m[3] === "H", paletted: m[4] === "P", bitstream: m[5] === "B"
+            }
+        }
+    }
+
+    /*  determine available hardware accelerations  */
+    info.hwaccels = {}
+    proc = execa.sync(binary, [ "-hide_banner", "-hwaccels" ])
+    let methods = proc.stdout.replace(/^Hardware acceleration methods:\r?\n((?:.|\r?\n)*)$/, "$1")
+        .replace(/^\s+/, "").replace(/\s+$/, "")
+    methods = (methods !== "" ? methods.split(/\s+/) : [])
+    for (const method of methods)
+        info.hwaccels[method] = true
+}
 
 module.exports = class FFmpeg {
-    static get binary () {
-        const { arch, platform } = process
-        let exe = ""
-        if      (arch === "x64"   && platform === "darwin")   exe = "ffmpeg-mac-x64"
-        else if (arch === "arm64" && platform === "darwin")   exe = "ffmpeg-mac-a64"
-        else if (arch === "x64"   && platform === "win32")    exe = "ffmpeg-win-x64.exe"
-        else if (arch === "x64"   && platform === "linux")    exe = "ffmpeg-lnx-x64"
-        else if (arch === "arm"   && platform === "linux")    exe = "ffmpeg-lnx-a64"
-        else if (arch === "x64"   && platform === "freebsd")  exe = "ffmpeg-bsd-x64"
-        else throw new Error("architecture/platform ${arch}/${platform} not supported")
-        return path.resolve(`${__dirname}/ffmpeg.d/${exe}`)
+    static get supported () {
+        return (binary !== null)
     }
-    static get version () {
-        return "4.4"
+    static get binary () {
+        if (!this.supported)
+            throw new Error("architecture/platform ${process.arch}/${process.platform} not supported")
+        return binary
+    }
+    static get info () {
+        return info
     }
 }
 
