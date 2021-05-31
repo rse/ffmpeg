@@ -30,6 +30,11 @@ Hint: if you need FFmpeg in the Browser (as in an Electron
 BrowserWindow), check out [FFmpeg.wasm](https://ffmpegwasm.github.io/)
 instead.
 
+**LICENSE NOTICE: Although this NPM module is licensed under MIT
+license, the externally downloaded and used FFmpeg binaries are
+licensed under LGPL/GPL, depending on their particular build-time
+configuration.**
+
 Installation
 ------------
 
