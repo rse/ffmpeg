@@ -18,14 +18,17 @@ distribution, to be able to easily use the latest versions of the
 `ffmpeg` executable from within [Node.js](https://nodejs.org) or from
 [Electron](https://electronjs.org) Node integrations.
 
-The crux of this particular NPM module is that the particular
-platform-specific binaries are manually pre-selected and
-[pre-prepared](ffmpeg.sh) and this NPM module on installation
-automatically [downloads](npm-install.yaml) the corresponding
-cherry-picked binary only.
+The crux of this NPM module is that the particular platform-specific
+FFmpeg binaries are manually [pre-selected and prepared](ffmpeg.sh)
+(from various sources) and this NPM module on installation
+[automatically downloads](npm-install.yaml) the corresponding
+cherry-picked FFmpeg binary only. Additionally, this NPM module provides
+a small API to programmatically determine the version and the features
+of the particular platform-specific FFmpeg binary.
 
-Hint: if you need FFmpeg in the Browser (like an Electron BrowserWindow),
-check out [FFmpeg.wasm](https://ffmpegwasm.github.io/).
+Hint: if you need FFmpeg in the Browser (as in an Electron
+BrowserWindow), check out [FFmpeg.wasm](https://ffmpegwasm.github.io/)
+instead.
 
 Installation
 ------------
@@ -38,13 +41,16 @@ Usage
 -----
 
 ```sh
-$ npx ffmpeg ...
+$ npx ffmpeg -version
 ```
 
 ```js
 const FFmpeg = require("@rse/ffmpeg")
 const execa  = require("execa")
-execa(FFmpeg.binary, [ ... ])
+if (FFmpeg.supported && FFmpeg.info.version.match(/^4\.4/)) {
+    const { stdout } = execa.sync(FFmpeg.binary, [ "-version" ])
+    console.log(stdout)
+}
 ```
 
 License
