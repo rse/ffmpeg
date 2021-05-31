@@ -43,7 +43,7 @@ else if (arch === "x64"   && platform === "linux")    binary = "ffmpeg-lnx-x64"
 else if (arch === "arm"   && platform === "linux")    binary = "ffmpeg-lnx-a64"
 else if (arch === "x64"   && platform === "freebsd")  binary = "ffmpeg-bsd-x64"
 if (binary !== null) {
-    binary = path.resolve(`${__dirname}/ffmpeg.d/${binary}`)
+    binary = path.resolve(path.join(__dirname, "ffmpeg.d", binary))
 
     /*  handle "unpacked ASAR" scenario (usually with Electron packaging)  */
     if (binary.match(/app\.asar/)) {
@@ -147,7 +147,7 @@ module.exports = class FFmpeg {
     }
     static get binary () {
         if (!this.supported)
-            throw new Error("architecture/platform ${process.arch}/${process.platform} not supported")
+            throw new Error(`architecture/platform ${process.arch}/${process.platform} not supported`)
         return binary
     }
     static get info () {
