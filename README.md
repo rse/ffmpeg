@@ -35,6 +35,15 @@ license, the externally downloaded and used FFmpeg binaries are licensed
 under LGPL or even GPL, depending on their particular build-time
 configuration.**
 
+Currently the following particular operating system / CPU-architecture platforms are supported only:
+
+- Windows/x64 (FFmpeg 4.4.1)
+- macOS/x64 (FFmpeg 4.4.1)
+- macOS/a64 (FFmpeg 4.4)
+- Linux/x64 (FFmpeg 4.4.1)
+- Linux/a64 (FFmpeg 4.4.1)
+- FreeBSD/x64 (FFmpeg 4.4)
+
 Installation
 ------------
 
