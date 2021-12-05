@@ -35,7 +35,7 @@ license, the externally downloaded and used FFmpeg binaries are licensed
 under LGPL or even GPL, depending on their particular build-time
 configuration.**
 
-Platform Supoort
+Platform Support
 ----------------
 
 Currently the following particular operating system / CPU-architecture platforms are supported only:
