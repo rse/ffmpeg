@@ -1,7 +1,7 @@
 {
     "name":                             "@rse/ffmpeg",
     "publishConfig":                    { "access": "public" },
-    "version":                          "1.0.2",
+    "version":                          "1.0.3",
     "description":                      "FFmpeg distribution for NPM",
     "keywords":                         [ "ffmpeg", "video", "audio" ],
     "main":                             "./ffmpeg-api.js",
