@@ -52,11 +52,11 @@ unzip -q -o -x -d ffmpeg.d mac-x64.zip ffmpeg
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-x64
 rm -f mac-x64.zip
 
-#   fetch macOS/a64 executable (version 4.4.0)
+#   fetch macOS/a64 executable (version 4.4.1)
 echo "++ mac-a64"
-download "https://www.osxexperts.net/ffmpeg44arm.zip" mac-a64.zip
-unzip -q -o -d ffmpeg.d mac-a64.zip ffmpeg
-mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-a64
+download "https://www.osxexperts.net/FFmpeg441ARM.zip" mac-a64.zip
+unzip -q -o -d ffmpeg.d mac-a64.zip FFmpeg441ARM
+mv ffmpeg.d/FFmpeg441ARM ffmpeg.d/ffmpeg-mac-a64
 rm -f mac-a64.zip
 
 #   fetch Linux/x64 executable (version 4.4.1)
