@@ -42,7 +42,7 @@ Currently the following particular operating system / CPU-architecture platforms
 
 - Windows/x64 (FFmpeg 4.4.1)
 - macOS/x64 (FFmpeg 4.4.1)
-- macOS/a64 (FFmpeg 4.4)
+- macOS/a64 (FFmpeg 4.4.1)
 - Linux/x64 (FFmpeg 4.4.1)
 - Linux/a64 (FFmpeg 4.4.1)
 - FreeBSD/x64 (FFmpeg 4.4)
