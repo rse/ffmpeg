@@ -40,7 +40,7 @@ else if (process.argv[2] === "epilog") {
     else if (arch === "arm64" && platform === "darwin")   binary = "ffmpeg-mac-a64"
     else if (arch === "x64"   && platform === "win32")    binary = "ffmpeg-win-x64.exe"
     else if (arch === "x64"   && platform === "linux")    binary = "ffmpeg-lnx-x64"
-    else if (arch === "arm"   && platform === "linux")    binary = "ffmpeg-lnx-a64"
+    else if (arch === "arm64" && platform === "linux")    binary = "ffmpeg-lnx-a64"
     else if (arch === "x64"   && platform === "freebsd")  binary = "ffmpeg-bsd-x64"
     if (binary !== null) {
         binary = path.join(__dirname, "ffmpeg.d", binary)
