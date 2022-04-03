@@ -40,12 +40,12 @@ Platform Support
 
 Currently the following particular operating system / CPU-architecture platforms are supported only:
 
-- Windows/x64 (FFmpeg 4.4.1)
-- macOS/x64 (FFmpeg 4.4.1)
-- macOS/a64 (FFmpeg 4.4.1)
-- Linux/x64 (FFmpeg 4.4.1)
-- Linux/a64 (FFmpeg 4.4.1)
-- FreeBSD/x64 (FFmpeg 4.4)
+- Windows/x64 (FFmpeg 5.0)
+- macOS/x64 (FFmpeg 5.0)
+- macOS/a64 (FFmpeg 5.0)
+- Linux/x64 (FFmpeg 5.0)
+- Linux/a64 (FFmpeg 5.0)
+- FreeBSD/x64 (FFmpeg 4.4.1)
 
 Installation
 ------------
@@ -64,7 +64,7 @@ $ npx ffmpeg -version
 ```js
 const FFmpeg = require("@rse/ffmpeg")
 const execa  = require("execa")
-if (FFmpeg.supported && FFmpeg.info.version.match(/^4\.4/)) {
+if (FFmpeg.supported && FFmpeg.info.version.match(/^[45]\./)) {
     const { stdout } = execa.sync(FFmpeg.binary, [ "-version" ])
     console.log(stdout)
 }
@@ -73,7 +73,7 @@ if (FFmpeg.supported && FFmpeg.info.version.match(/^4\.4/)) {
 License
 -------
 
-Copyright (c) 2021 Dr. Ralf S. Engelschall (http://engelschall.com/)
+Copyright (c) 2021-2022 Dr. Ralf S. Engelschall (http://engelschall.com/)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

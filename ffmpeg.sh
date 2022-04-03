@@ -36,47 +36,47 @@ download () {
 	curl -k -L "-#" --compressed -A "https://github.com/rse/ffmpeg" -o "$2" "$1"
 }
 
-#   fetch Windows/x64 executable (version 4.4.1)
+#   fetch Windows/x64 executable (version 5.0)
 echo "++ win-x64"
-download "https://github.com/GyanD/codexffmpeg/releases/download/4.4.1/ffmpeg-4.4.1-essentials_build.zip" win-x64.zip
+download "https://github.com/GyanD/codexffmpeg/releases/download/5.0/ffmpeg-5.0-essentials_build.zip" win-x64.zip
 unzip -q -o -x win-x64.zip
-mv ffmpeg-4.4.1-essentials_build/bin/ffmpeg.exe ffmpeg.d/ffmpeg-win-x64.exe
+mv ffmpeg-5.0-essentials_build/bin/ffmpeg.exe ffmpeg.d/ffmpeg-win-x64.exe
 chmod 755 ffmpeg.d/ffmpeg-win-x64.exe
-rm -rf ffmpeg-4.4.1-essentials_build
+rm -rf ffmpeg-5.0-essentials_build
 rm -f win-x64.zip
 
-#   fetch macOS/x64 executable (version 4.4.1)
+#   fetch macOS/x64 executable (version 5.0)
 echo "++ mac-x64"
-download "https://evermeet.cx/pub/ffmpeg/ffmpeg-4.4.1.zip" mac-x64.zip
+download "https://evermeet.cx/pub/ffmpeg/ffmpeg-5.0.zip" mac-x64.zip
 unzip -q -o -x -d ffmpeg.d mac-x64.zip ffmpeg
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-x64
 rm -f mac-x64.zip
 
-#   fetch macOS/a64 executable (version 4.4.1)
+#   fetch macOS/a64 executable (version 5.0)
 echo "++ mac-a64"
-download "https://www.osxexperts.net/FFmpeg441ARM.zip" mac-a64.zip
-unzip -q -o -d ffmpeg.d mac-a64.zip FFmpeg441ARM
-mv ffmpeg.d/FFmpeg441ARM ffmpeg.d/ffmpeg-mac-a64
+download "https://www.osxexperts.net/FFmpegARM.zip" mac-a64.zip
+unzip -q -o -d ffmpeg.d mac-a64.zip ffmpeg
+mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-a64
 rm -f mac-a64.zip
 
-#   fetch Linux/x64 executable (version 4.4.1)
+#   fetch Linux/x64 executable (version 5.0)
 echo "++ lnx-x64"
 download "https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz" lnx-x64.tar.xz
-xz -d <lnx-x64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-4.4.1-amd64-static/ffmpeg"
+xz -d <lnx-x64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-5.0-amd64-static/ffmpeg"
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-lnx-x64
 chmod 755 ffmpeg.d/ffmpeg-lnx-x64
 rm -f lnx-x64.tar.xz
 
-#   fetch Linux/a64 executable (version 4.4.1)
+#   fetch Linux/a64 executable (version 5.0)
 echo "++ lnx-a64"
 download "https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-arm64-static.tar.xz" lnx-a64.tar.xz
-xz -d <lnx-a64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-4.4.1-arm64-static/ffmpeg"
+xz -d <lnx-a64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-5.0-arm64-static/ffmpeg"
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-lnx-a64
 chmod 755 ffmpeg.d/ffmpeg-lnx-a64
 rm -f lnx-a64.tar.xz
 
-#   fetch FreeBSD/x64 executable (version 4.4.0)
+#   fetch FreeBSD/x64 executable (version 4.4.1)
 echo "++ bsd-x64"
-download "https://github.com/Thefrank/ffmpeg-static-freebsd/releases/download/v4.4/ffmpeg" ffmpeg.d/ffmpeg-bsd-x64
+download "https://github.com/Thefrank/ffmpeg-static-freebsd/releases/download/v4.4.1/ffmpeg" ffmpeg.d/ffmpeg-bsd-x64
 chmod 755 ffmpeg.d/ffmpeg-bsd-x64
 
