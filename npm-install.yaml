@@ -24,7 +24,7 @@
 
 -   arch:     "x64"
     platform: "darwin"
-    name:     "FFmpeg 5.0 (macOS/x64, static) [78 MB]"
+    name:     "FFmpeg 5.1.2 (macOS/x64, static) [78 MB]"
     input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-mac-x64"
     extract:  false
     output:   "ffmpeg.d/ffmpeg-mac-x64"
@@ -38,28 +38,28 @@
 
 -   arch:     "x64"
     platform: "win32"
-    name:     "FFmpeg 5.0 (Windows/x64, static) [78 MB]"
+    name:     "FFmpeg 5.1.2 (Windows/x64, static) [78 MB]"
     input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-win-x64.exe"
     extract:  false
     output:   "ffmpeg.d/ffmpeg-win-x64.exe"
 
 -   arch:     "x64"
     platform: "linux"
-    name:     "FFmpeg 5.0 (Linux/x64, static) [78 MB]"
+    name:     "FFmpeg 5.1.1 (Linux/x64, static) [78 MB]"
     input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-lnx-x64"
     extract:  false
     output:   "ffmpeg.d/ffmpeg-lnx-x64"
 
 -   arch:     "arm64"
     platform: "linux"
-    name:     "FFmpeg 5.0 (Linux/a64, static) [49 MB]"
+    name:     "FFmpeg 5.1.1 (Linux/a64, static) [49 MB]"
     input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-lnx-a64"
     extract:  false
     output:   "ffmpeg.d/ffmpeg-lnx-a64"
 
 -   arch:     "x64"
     platform: "freebsd"
-    name:     "FFmpeg 4.4.1 (FreeBSD/x64, static) [66 MB]"
+    name:     "FFmpeg 5.1.1 (FreeBSD/x64, static) [70 MB]"
     input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-bsd-x64"
     extract:  false
     output:   "ffmpeg.d/ffmpeg-bsd-x64"
