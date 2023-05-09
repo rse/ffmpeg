@@ -36,41 +36,41 @@ download () {
 	curl -k -L "-#" --compressed -A "https://github.com/rse/ffmpeg" -o "$2" "$1"
 }
 
-#   fetch Windows/x64 executable (version 5.1.2)
+#   fetch Windows/x64 executable (version 6.0)
 echo "++ win-x64"
-download "https://github.com/GyanD/codexffmpeg/releases/download/5.1.2/ffmpeg-5.1.2-essentials_build.zip" win-x64.zip
+download "https://github.com/GyanD/codexffmpeg/releases/download/6.0/ffmpeg-6.0-essentials_build.zip" win-x64.zip
 unzip -q -o -x win-x64.zip
-mv ffmpeg-5.1.2-essentials_build/bin/ffmpeg.exe ffmpeg.d/ffmpeg-win-x64.exe
+mv ffmpeg-6.0-essentials_build/bin/ffmpeg.exe ffmpeg.d/ffmpeg-win-x64.exe
 chmod 755 ffmpeg.d/ffmpeg-win-x64.exe
-rm -rf ffmpeg-5.1.2-essentials_build
+rm -rf ffmpeg-6.0-essentials_build
 rm -f win-x64.zip
 
-#   fetch macOS/x64 executable (version 5.1.2)
+#   fetch macOS/x64 executable (version 6.0)
 echo "++ mac-x64"
-download "https://evermeet.cx/pub/ffmpeg/ffmpeg-5.1.2.zip" mac-x64.zip
+download "https://evermeet.cx/pub/ffmpeg/ffmpeg-6.0.zip" mac-x64.zip
 unzip -q -o -x -d ffmpeg.d mac-x64.zip ffmpeg
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-x64
 rm -f mac-x64.zip
 
-#   fetch macOS/a64 executable (version 5.0)
+#   fetch macOS/a64 executable (version 6.0)
 echo "++ mac-a64"
-download "https://www.osxexperts.net/FFmpegARM.zip" mac-a64.zip
+download "https://www.osxexperts.net/ffmpeg6arm.zip" mac-a64.zip
 unzip -q -o -d ffmpeg.d mac-a64.zip ffmpeg
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-a64
 rm -f mac-a64.zip
 
-#   fetch Linux/x64 executable (version 5.1.1)
+#   fetch Linux/x64 executable (version 6.0)
 echo "++ lnx-x64"
 download "https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz" lnx-x64.tar.xz
-xz -d <lnx-x64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-5.1.1-amd64-static/ffmpeg"
+xz -d <lnx-x64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-6.0-amd64-static/ffmpeg"
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-lnx-x64
 chmod 755 ffmpeg.d/ffmpeg-lnx-x64
 rm -f lnx-x64.tar.xz
 
-#   fetch Linux/a64 executable (version 5.1.1)
+#   fetch Linux/a64 executable (version 6.0)
 echo "++ lnx-a64"
 download "https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-arm64-static.tar.xz" lnx-a64.tar.xz
-xz -d <lnx-a64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-5.1.1-arm64-static/ffmpeg"
+xz -d <lnx-a64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-6.0-arm64-static/ffmpeg"
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-lnx-a64
 chmod 755 ffmpeg.d/ffmpeg-lnx-a64
 rm -f lnx-a64.tar.xz
