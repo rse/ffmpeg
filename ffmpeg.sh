@@ -36,25 +36,25 @@ download () {
 	curl -k -L "-#" --compressed -A "https://github.com/rse/ffmpeg" -o "$2" "$1"
 }
 
-#   fetch Windows/x64 executable (version 6.0)
+#   fetch Windows/x64 executable (version 6.1)
 echo "++ win-x64"
-download "https://github.com/GyanD/codexffmpeg/releases/download/6.0/ffmpeg-6.0-essentials_build.zip" win-x64.zip
+download "https://github.com/GyanD/codexffmpeg/releases/download/6.1/ffmpeg-6.1-essentials_build.zip" win-x64.zip
 unzip -q -o -x win-x64.zip
-mv ffmpeg-6.0-essentials_build/bin/ffmpeg.exe ffmpeg.d/ffmpeg-win-x64.exe
+mv ffmpeg-6.1-essentials_build/bin/ffmpeg.exe ffmpeg.d/ffmpeg-win-x64.exe
 chmod 755 ffmpeg.d/ffmpeg-win-x64.exe
-rm -rf ffmpeg-6.0-essentials_build
+rm -rf ffmpeg-6.1-essentials_build
 rm -f win-x64.zip
 
-#   fetch macOS/x64 executable (version 6.0)
+#   fetch macOS/x64 executable (version 6.0.1)
 echo "++ mac-x64"
-download "https://evermeet.cx/pub/ffmpeg/ffmpeg-6.0.zip" mac-x64.zip
+download "https://evermeet.cx/pub/ffmpeg/ffmpeg-6.0.1.zip" mac-x64.zip
 unzip -q -o -x -d ffmpeg.d mac-x64.zip ffmpeg
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-x64
 rm -f mac-x64.zip
 
-#   fetch macOS/a64 executable (version 6.0)
+#   fetch macOS/a64 executable (version 6.1)
 echo "++ mac-a64"
-download "https://www.osxexperts.net/ffmpeg6arm.zip" mac-a64.zip
+download "https://www.osxexperts.net/ffmpeg61arm.zip" mac-a64.zip
 unzip -q -o -d ffmpeg.d mac-a64.zip ffmpeg
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-a64
 rm -f mac-a64.zip
@@ -75,8 +75,8 @@ mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-lnx-a64
 chmod 755 ffmpeg.d/ffmpeg-lnx-a64
 rm -f lnx-a64.tar.xz
 
-#   fetch FreeBSD/x64 executable (version 5.1.1)
+#   fetch FreeBSD/x64 executable (version 6.0)
 echo "++ bsd-x64"
-download "https://github.com/Thefrank/ffmpeg-static-freebsd/releases/download/v5.1.1/ffmpeg" ffmpeg.d/ffmpeg-bsd-x64
+download "https://github.com/Thefrank/ffmpeg-static-freebsd/releases/download/v6.0.0/ffmpeg" ffmpeg.d/ffmpeg-bsd-x64
 chmod 755 ffmpeg.d/ffmpeg-bsd-x64
 
