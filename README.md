@@ -40,12 +40,12 @@ Platform Support
 
 Currently the following particular operating system / CPU-architecture platforms are supported only:
 
-- Windows/x64 (FFmpeg 6.0)
-- macOS/x64 (FFmpeg 6.0)
-- macOS/a64 (FFmpeg 6.0)
-- Linux/x64 (FFmpeg 6.0)
-- Linux/a64 (FFmpeg 6.0)
-- FreeBSD/x64 (FFmpeg 5.1.1)
+- Windows/x64 (FFmpeg 6.1.0)
+- macOS/x64 (FFmpeg 6.0.1)
+- macOS/a64 (FFmpeg 6.1.0)
+- Linux/x64 (FFmpeg 6.0.0)
+- Linux/a64 (FFmpeg 6.0.0)
+- FreeBSD/x64 (FFmpeg 6.0.0)
 
 Installation
 ------------
