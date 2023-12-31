@@ -45,9 +45,9 @@ chmod 755 ffmpeg.d/ffmpeg-win-x64.exe
 rm -rf ffmpeg-6.1-essentials_build
 rm -f win-x64.zip
 
-#   fetch macOS/x64 executable (version 6.0.1)
+#   fetch macOS/x64 executable (version 6.1)
 echo "++ mac-x64"
-download "https://evermeet.cx/pub/ffmpeg/ffmpeg-6.0.1.zip" mac-x64.zip
+download "https://evermeet.cx/pub/ffmpeg/ffmpeg-6.1.zip" mac-x64.zip
 unzip -q -o -x -d ffmpeg.d mac-x64.zip ffmpeg
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-x64
 rm -f mac-x64.zip
@@ -59,24 +59,24 @@ unzip -q -o -d ffmpeg.d mac-a64.zip ffmpeg
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-a64
 rm -f mac-a64.zip
 
-#   fetch Linux/x64 executable (version 6.0)
+#   fetch Linux/x64 executable (version 6.1)
 echo "++ lnx-x64"
 download "https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz" lnx-x64.tar.xz
-xz -d <lnx-x64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-6.0-amd64-static/ffmpeg"
+xz -d <lnx-x64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-6.1-amd64-static/ffmpeg"
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-lnx-x64
 chmod 755 ffmpeg.d/ffmpeg-lnx-x64
 rm -f lnx-x64.tar.xz
 
-#   fetch Linux/a64 executable (version 6.0)
+#   fetch Linux/a64 executable (version 6.1)
 echo "++ lnx-a64"
 download "https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-arm64-static.tar.xz" lnx-a64.tar.xz
-xz -d <lnx-a64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-6.0-arm64-static/ffmpeg"
+xz -d <lnx-a64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-6.1-arm64-static/ffmpeg"
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-lnx-a64
 chmod 755 ffmpeg.d/ffmpeg-lnx-a64
 rm -f lnx-a64.tar.xz
 
-#   fetch FreeBSD/x64 executable (version 6.0)
+#   fetch FreeBSD/x64 executable (version 6.1)
 echo "++ bsd-x64"
-download "https://github.com/Thefrank/ffmpeg-static-freebsd/releases/download/v6.0.0/ffmpeg" ffmpeg.d/ffmpeg-bsd-x64
+download "https://github.com/Thefrank/ffmpeg-static-freebsd/releases/download/v6.1.0/ffmpeg" ffmpeg.d/ffmpeg-bsd-x64
 chmod 755 ffmpeg.d/ffmpeg-bsd-x64
 
