@@ -9,7 +9,7 @@
     "license":                          "(MIT AND LGPL-2.1 AND GPL-2.0)",
     "repository": {
         "type":                         "git",
-        "url":                          "https://github.com/rse/ffmpeg.git"
+        "url":                          "git+https://github.com/rse/ffmpeg.git"
     },
     "author": {
         "name":                         "Dr. Ralf S. Engelschall",
