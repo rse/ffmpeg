@@ -27,7 +27,7 @@ a small API to programmatically determine the version and the features
 of the particular platform-specific FFmpeg binary.
 
 Hint: if you need FFmpeg in the Browser (as in an Electron
-BrowserWindow), check out [FFmpeg.wasm](https://ffmpegwasm.github.io/)
+BrowserWindow), check out [FFmpeg.wasm](https://ffmpegwasm.netlify.app/)
 instead.
 
 **LICENSE NOTICE: Although this NPM module is licensed under MIT
