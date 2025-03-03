@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ##
 ##  @rse/ffmpeg -- FFmpeg distribution for NPM
-##  Copyright (c) 2021-2023 Dr. Ralf S. Engelschall <rse@engelschall.com>
+##  Copyright (c) 2021-2025 Dr. Ralf S. Engelschall <rse@engelschall.com>
 ##
 ##  Permission is hereby granted, free of charge, to any person obtaining
 ##  a copy of this software and associated documentation files (the
@@ -36,47 +36,47 @@ download () {
 	curl -k -L "-#" --compressed -A "https://github.com/rse/ffmpeg" -o "$2" "$1"
 }
 
-#   fetch Windows/x64 executable (version 6.1)
+#   fetch Windows/x64 executable (version 7.1)
 echo "++ win-x64"
-download "https://github.com/GyanD/codexffmpeg/releases/download/6.1/ffmpeg-6.1-essentials_build.zip" win-x64.zip
+download "https://github.com/GyanD/codexffmpeg/releases/download/7.1/ffmpeg-7.1-essentials_build.zip" win-x64.zip
 unzip -q -o -x win-x64.zip
-mv ffmpeg-6.1-essentials_build/bin/ffmpeg.exe ffmpeg.d/ffmpeg-win-x64.exe
+mv ffmpeg-7.1-essentials_build/bin/ffmpeg.exe ffmpeg.d/ffmpeg-win-x64.exe
 chmod 755 ffmpeg.d/ffmpeg-win-x64.exe
-rm -rf ffmpeg-6.1-essentials_build
+rm -rf ffmpeg-7.1-essentials_build
 rm -f win-x64.zip
 
-#   fetch macOS/x64 executable (version 6.1)
+#   fetch macOS/x64 executable (version 7.1.1)
 echo "++ mac-x64"
-download "https://evermeet.cx/pub/ffmpeg/ffmpeg-6.1.zip" mac-x64.zip
+download "https://evermeet.cx/pub/ffmpeg/ffmpeg-7.1.1.zip" mac-x64.zip
 unzip -q -o -x -d ffmpeg.d mac-x64.zip ffmpeg
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-x64
 rm -f mac-x64.zip
 
-#   fetch macOS/a64 executable (version 6.1)
+#   fetch macOS/a64 executable (version 7.1)
 echo "++ mac-a64"
-download "https://www.osxexperts.net/ffmpeg61arm.zip" mac-a64.zip
+download "https://www.osxexperts.net/ffmpeg71arm.zip" mac-a64.zip
 unzip -q -o -d ffmpeg.d mac-a64.zip ffmpeg
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-a64
 rm -f mac-a64.zip
 
-#   fetch Linux/x64 executable (version 6.1)
+#   fetch Linux/x64 executable (version 7.0.2)
 echo "++ lnx-x64"
 download "https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz" lnx-x64.tar.xz
-xz -d <lnx-x64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-6.1-amd64-static/ffmpeg"
+xz -d <lnx-x64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-7.0.2-amd64-static/ffmpeg"
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-lnx-x64
 chmod 755 ffmpeg.d/ffmpeg-lnx-x64
 rm -f lnx-x64.tar.xz
 
-#   fetch Linux/a64 executable (version 6.1)
+#   fetch Linux/a64 executable (version 7.0.2)
 echo "++ lnx-a64"
 download "https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-arm64-static.tar.xz" lnx-a64.tar.xz
-xz -d <lnx-a64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-6.1-arm64-static/ffmpeg"
+xz -d <lnx-a64.tar.xz | tar -x -C ffmpeg.d --strip-components 1 -f- "ffmpeg-7.0.2-arm64-static/ffmpeg"
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-lnx-a64
 chmod 755 ffmpeg.d/ffmpeg-lnx-a64
 rm -f lnx-a64.tar.xz
 
-#   fetch FreeBSD/x64 executable (version 6.1)
+#   fetch FreeBSD/x64 executable (version 7.1)
 echo "++ bsd-x64"
-download "https://github.com/Thefrank/ffmpeg-static-freebsd/releases/download/v6.1.0/ffmpeg" ffmpeg.d/ffmpeg-bsd-x64
+download "https://github.com/Thefrank/ffmpeg-static-freebsd/releases/download/v7.1/ffmpeg" ffmpeg.d/ffmpeg-bsd-x64
 chmod 755 ffmpeg.d/ffmpeg-bsd-x64
 

@@ -1,6 +1,6 @@
 ##
 ##  @rse/ffmpeg -- FFmpeg distribution for NPM
-##  Copyright (c) 2021-2023 Dr. Ralf S. Engelschall <rse@engelschall.com>
+##  Copyright (c) 2021-2025 Dr. Ralf S. Engelschall <rse@engelschall.com>
 ##
 ##  Permission is hereby granted, free of charge, to any person obtaining
 ##  a copy of this software and associated documentation files (the
@@ -24,42 +24,42 @@
 
 -   arch:     "x64"
     platform: "darwin"
-    name:     "FFmpeg 6.0 (macOS/x64, static) [78 MB]"
+    name:     "FFmpeg 7.1 (macOS/x64, static) [79 MB]"
     input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-mac-x64"
     extract:  false
     output:   "ffmpeg.d/ffmpeg-mac-x64"
 
 -   arch:     "arm64"
     platform: "darwin"
-    name:     "FFmpeg 6.0 (macOS/a64, static) [45 MB]"
+    name:     "FFmpeg 7.1 (macOS/a64, static) [49 MB]"
     input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-mac-a64"
     extract:  false
     output:   "ffmpeg.d/ffmpeg-mac-a64"
 
 -   arch:     "x64"
     platform: "win32"
-    name:     "FFmpeg 6.0 (Windows/x64, static) [81 MB]"
+    name:     "FFmpeg 7.1 (Windows/x64, static) [87 MB]"
     input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-win-x64.exe"
     extract:  false
     output:   "ffmpeg.d/ffmpeg-win-x64.exe"
 
 -   arch:     "x64"
     platform: "linux"
-    name:     "FFmpeg 6.0 (Linux/x64, static) [78 MB]"
+    name:     "FFmpeg 7.0.2 (Linux/x64, static) [79 MB]"
     input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-lnx-x64"
     extract:  false
     output:   "ffmpeg.d/ffmpeg-lnx-x64"
 
 -   arch:     "arm64"
     platform: "linux"
-    name:     "FFmpeg 6.0 (Linux/a64, static) [50 MB]"
+    name:     "FFmpeg 7.0.2 (Linux/a64, static) [51 MB]"
     input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-lnx-a64"
     extract:  false
     output:   "ffmpeg.d/ffmpeg-lnx-a64"
 
 -   arch:     "x64"
     platform: "freebsd"
-    name:     "FFmpeg 5.1.1 (FreeBSD/x64, static) [70 MB]"
+    name:     "FFmpeg 7.1 (FreeBSD/x64, static) [83 MB]"
     input:    "https://github.com/rse/ffmpeg/releases/download/%{version}/ffmpeg-bsd-x64"
     extract:  false
     output:   "ffmpeg.d/ffmpeg-bsd-x64"
