@@ -40,9 +40,9 @@ Platform Support
 
 Currently the following particular operating system / CPU-architecture platforms are supported only:
 
-- Windows/x64 (FFmpeg 7.1.0)
+- Windows/x64 (FFmpeg 7.1.1)
 - macOS/x64 (FFmpeg 7.1.1)
-- macOS/a64 (FFmpeg 7.1.0)
+- macOS/a64 (FFmpeg 7.1.1)
 - Linux/x64 (FFmpeg 7.0.2)
 - Linux/a64 (FFmpeg 7.0.2)
 - FreeBSD/x64 (FFmpeg 7.1.0)

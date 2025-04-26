@@ -38,11 +38,11 @@ download () {
 
 #   fetch Windows/x64 executable (version 7.1)
 echo "++ win-x64"
-download "https://github.com/GyanD/codexffmpeg/releases/download/7.1/ffmpeg-7.1-essentials_build.zip" win-x64.zip
+download "https://github.com/GyanD/codexffmpeg/releases/download/7.1.1/ffmpeg-7.1.1-essentials_build.zip" win-x64.zip
 unzip -q -o -x win-x64.zip
-mv ffmpeg-7.1-essentials_build/bin/ffmpeg.exe ffmpeg.d/ffmpeg-win-x64.exe
+mv ffmpeg-7.1.1-essentials_build/bin/ffmpeg.exe ffmpeg.d/ffmpeg-win-x64.exe
 chmod 755 ffmpeg.d/ffmpeg-win-x64.exe
-rm -rf ffmpeg-7.1-essentials_build
+rm -rf ffmpeg-7.1.1-essentials_build
 rm -f win-x64.zip
 
 #   fetch macOS/x64 executable (version 7.1.1)
@@ -52,9 +52,9 @@ unzip -q -o -x -d ffmpeg.d mac-x64.zip ffmpeg
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-x64
 rm -f mac-x64.zip
 
-#   fetch macOS/a64 executable (version 7.1)
+#   fetch macOS/a64 executable (version 7.1.1)
 echo "++ mac-a64"
-download "https://www.osxexperts.net/ffmpeg71arm.zip" mac-a64.zip
+download "https://www.osxexperts.net/ffmpeg711arm.zip" mac-a64.zip
 unzip -q -o -d ffmpeg.d mac-a64.zip ffmpeg
 mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-mac-a64
 rm -f mac-a64.zip
@@ -75,7 +75,7 @@ mv ffmpeg.d/ffmpeg ffmpeg.d/ffmpeg-lnx-a64
 chmod 755 ffmpeg.d/ffmpeg-lnx-a64
 rm -f lnx-a64.tar.xz
 
-#   fetch FreeBSD/x64 executable (version 7.1)
+#   fetch FreeBSD/x64 executable (version 7.1.0)
 echo "++ bsd-x64"
 download "https://github.com/Thefrank/ffmpeg-static-freebsd/releases/download/v7.1/ffmpeg" ffmpeg.d/ffmpeg-bsd-x64
 chmod 755 ffmpeg.d/ffmpeg-bsd-x64
