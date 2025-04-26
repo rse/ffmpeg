@@ -5,6 +5,7 @@
     "description":                      "FFmpeg distribution for NPM",
     "keywords":                         [ "ffmpeg", "video", "audio" ],
     "main":                             "./ffmpeg-api.js",
+    "types":                            "./ffmpeg.d.ts",
     "bin":                              { "ffmpeg": "./ffmpeg-cli.js" },
     "license":                          "(MIT AND LGPL-2.1 AND GPL-2.0)",
     "repository": {
